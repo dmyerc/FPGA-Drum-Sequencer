@@ -1,0 +1,50 @@
+module light_controller (beat, LEDR);
+	output logic [9:0] LEDR;
+	input integer beat;
+	
+	integer counter;
+	// State variables
+	enum { low, high } ps, ns;
+	
+	// Next State logic
+	always_comb begin
+	case (beat)
+		0: LEDR = 10'b0000000001;
+		1: LEDR = 10'b0000000010;
+		2: LEDR = 10'b0000000100;
+		3: LEDR = 10'b0000001000;
+		4: LEDR = 10'b0000010000;
+		5: LEDR = 10'b0000100000;
+		6: LEDR = 10'b0001000000;
+		7: LEDR = 10'b0010000000;
+		default: LEDR = 10'b0000000000; // or some other default value
+	endcase
+	end
+	
+
+module light_controller_testbench();
+	logic [9:0] LEDR;
+	integer beat;
+	
+	light_controller dut (.beat, .LEDR);
+
+	// Set up a simulated clock.
+	parameter CLOCK_PERIOD=100;
+	initial begin
+		CLOCK_50 <= 0;
+		forever #(CLOCK_PERIOD/2) CLOCK_50 <= ~CLOCK_50; // Forever toggle the clock
+	end
+	
+	// Test the design.
+	integer i;
+	initial begin
+		@(posedge CLOCK_50);
+		for (i=0;i<8;i++) begin
+			beat <= i; repeat(1) @(posedge CLOCK_50);
+		end
+		
+		beat<= 0; repeat(3) @(posedge CLOCK_50);
+		
+		$stop; // End the simulation.
+	end
+endmodule

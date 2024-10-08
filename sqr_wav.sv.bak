@@ -1,0 +1,32 @@
+module sqr_wav (CLOCK_50, reset, advance, out);
+	output logic [23:0] out;
+	input logic CLOCK_50, reset advance
+	
+	// State variables
+	enum { low, high } ps, ns;
+	
+	// Next State logic
+	always_comb begin
+	case (ps)
+		low: if (counter == 25000) ns = high;
+			else ns = low;
+		high: if (counter == 25000) ns = low;
+			else ns = low;
+	endcase
+	end
+	
+	always_comb begin
+	case (ps)
+		low: assign out = 24'b0;
+		high: assign out = 24'b010000000000000000000000;
+	endcase
+	end
+	
+	// DFFs
+	always_ff @(posedge clk) begin
+		if (reset)
+			ps <= none;
+		else
+			ps <= ns;
+	end
+endmodule

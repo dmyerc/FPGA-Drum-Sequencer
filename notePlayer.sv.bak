@@ -1,0 +1,45 @@
+module notePlayer(CLOCK_50, reset, SW, out);
+	output logic [23:0] out;
+	input logic CLOCK_50, reset;
+	input logic SW[7:0];
+	
+	integer counter;
+	// State variables
+	enum { off, on } ps, ns;
+	
+	// Next State logic
+	always_comb begin
+	case (ps)
+		off: if (counter == 25000) begin
+				ns = high;
+				counter = 0;
+			end
+			else ns = low;
+		on: if (counter == 25000) begin
+				ns = low;
+				counter = 0;
+			end
+			else ns = low;
+	endcase
+	end
+	
+		
+	always_comb begin
+	case (ps)
+		low: assign out = 24'b0;
+		high: assign out = 24'b010000000000000000000000;
+	endcase
+	end
+	
+	// DFFs
+	always_ff @(posedge CLOCK_50) begin
+		if (reset) begin
+			ps <= low;
+			counter <= 0;
+		end
+		else begin
+			ps <= ns;
+			counter++;
+		end
+	end
+endmodule

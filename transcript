@@ -1,0 +1,79 @@
+# Reading C:/intelFPGA_lite/17.0/modelsim_ase/tcl/vsim/pref.tcl
+do ligthrun.do
+# Cannot open macro file: ligthrun.do
+do lightrun.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:54:32 on May 22,2024
+# vlog -reportprogress 300 ./light_controller.sv 
+# -- Compiling module light_controller
+# -- Compiling module light_controller_testbench
+# 
+# Top level modules:
+# 	light_controller_testbench
+# End time: 19:54:32 on May 22,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work sqr_wav_testbench 
+# Start time: 19:54:32 on May 22,2024
+# Loading sv_std.std
+# Loading work.sqr_wav_testbench
+# Loading work.sqr_wav
+# ** Error: Cannot open macro file: light_controller_wave.do
+# Error in macro ./lightrun.do line 17
+# Cannot open macro file: light_controller_wave.do
+#     while executing
+# "do light_controller_wave.do"
+do lightrun.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:55:26 on May 22,2024
+# vlog -reportprogress 300 ./light_controller.sv 
+# -- Compiling module light_controller
+# -- Compiling module light_controller_testbench
+# 
+# Top level modules:
+# 	light_controller_testbench
+# End time: 19:55:26 on May 22,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 19:55:27 on May 22,2024, Elapsed time: 0:00:55
+# Errors: 3, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work light_controller_testbench 
+# Start time: 19:55:27 on May 22,2024
+# Loading sv_std.std
+# Loading work.light_controller_testbench
+# Loading work.light_controller
+# ** Error: Cannot open macro file: light_controller_wave.do
+# Error in macro ./lightrun.do line 17
+# Cannot open macro file: light_controller_wave.do
+#     while executing
+# "do light_controller_wave.do"
+add wave -position end  sim:/light_controller_testbench/LEDR
+add wave -position end  sim:/light_controller_testbench/beat
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf {C:/Users/domin/OneDrive/Documents/EE271/Lab 8/light_controller_wave.do}
+do lightrun.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:55:58 on May 22,2024
+# vlog -reportprogress 300 ./light_controller.sv 
+# -- Compiling module light_controller
+# -- Compiling module light_controller_testbench
+# 
+# Top level modules:
+# 	light_controller_testbench
+# End time: 19:55:58 on May 22,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 19:55:59 on May 22,2024, Elapsed time: 0:00:32
+# Errors: 3, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work light_controller_testbench 
+# Start time: 19:55:59 on May 22,2024
+# Loading sv_std.std
+# Loading work.light_controller_testbench
+# Loading work.light_controller
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./light_controller.sv(42)
+#    Time: 120 ps  Iteration: 0  Instance: /light_controller_testbench
+# Break in Module light_controller_testbench at ./light_controller.sv line 42
+# End time: 20:54:49 on May 22,2024, Elapsed time: 0:58:50
+# Errors: 0, Warnings: 0
